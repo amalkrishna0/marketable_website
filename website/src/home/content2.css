@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+.main_content
+{
+    width: 70%;
+    margin:0 auto;
+    font-family: 'Handlee', sans-serif;
+    
+}
+.courses{
+    border: 1px solid white;
+    padding: 40px;
+    border-radius: 40px;
+}
+.heading_content2{
+    text-align: center;
+    display:grid;
+    
+}
+.detail_content2{
+    font-size: 4vh;
+}
+
+.team_members{
+    margin-top: 40vh;
+}
+.heading2_content2{
+    text-align: center;
+}
+
+
+.container2{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.img1{
+    background-image: url('marketable1.jpg');
+    height: 300px;
+    width: 200px;
+    border-radius: 3px;
+}
+.img2{
+    background-image: url('marketable1.jpg');
+    height: 300px;
+    width: 200px;
+    border-radius: 3px;
+}
+.img3{
+    background-image: url('marketable1.jpg');
+    height: 300px;
+    width: 200px;
+    border-radius: 3px;
+}
+.img4{
+    background-image: url('marketable1.jpg');
+    height: 300px;
+    width: 200px;
+    border-radius: 3px;
+}
+.intro{
+    font-size: 8px;
+    position: absolute;
+    color: black;
+    transform: translateY(-80px);
+    visibility:hidden;
+    padding: 10px;
+    transition: opacity 0.3s; 
+
+}
+.card{  
+    opacity: 0.3;
+    position: relative;
+    
+}
+.card:hover .intro{
+    visibility: visible;
+    opacity: 1;
+    background-color: rgba(112, 95, 95, 0.39);
+    transition: 10s ease-in-out;
+}
+.card .intro{
+    width: 100%;
+}
+
+@media (max-width: 1250px) {
+    .heading2_content2{
+        color: red;
+    }
+    .container2{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        flex-basis: calc(50% - 10px);
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+    .heading_content2{
+        font-size: 20px;
+    }
+    .detail_content2{
+        font-size: 20px;
+    }
+    .intro{
+        width: 100%;
+    }
+
+}

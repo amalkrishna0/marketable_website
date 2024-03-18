@@ -69,32 +69,3 @@
   background-position: 0%;
 }
 
-<<<<<<< HEAD
-@media (max-width: 768px) {
-    .main_display {
-      width: 100%;
-    }
-  
-    .slider {
-      aspect-ratio: unset;
-    }
-  
-    .slider img {
-      flex: 1 0 100%;
-      scroll-snap-align: start;
-      object-fit: cover;
-      width: 100%; 
-      height: auto; 
-  
-    .slider_nav {
-      bottom: 0.75rem;
-    }
-  
-    .slider_nav a {
-      width: 0.4rem; 
-      height: 0.4rem; 
-    }
-  }
-}
-=======
->>>>>>> 95f0f2e (Aded courses image with scroll animation)

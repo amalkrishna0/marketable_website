@@ -21,10 +21,10 @@ mongoose
 app.post("/register", async (req, res) => {
     try {
         const userdata = await UserDataModel.create(req.body);
-        res.status(201).json(userdata);
+        res.status(201).json({ userdata, message: "User registered successfully" ,success:true});
       } catch (err) {
         console.error("Error registering user:", err);
-        res.status(500).json({ error: "An error occurred while registering the user" });
+        res.status(500).json({ error: "An error occurred while registering the user" ,message: "User registered failed" ,success:false});
       }
     });
     

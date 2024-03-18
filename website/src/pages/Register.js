@@ -1,98 +1,62 @@
-    import { Link ,useNavigate} from 'react-router-dom'
-    import React , {useState} from 'react'
-    import './register.css'
-    import axios from "axios"
-    import cookies from "js-cookie"
+import React, { useEffect ,useState} from 'react';
+import { GoogleLogin } from 'react-google-login';
+import { useNavigate } from 'react-router-dom';
 
-    export default function Register() {
-        const navigate=useNavigate();
-        
-        const [name,setName]=useState();
-        const [email,setEmail]=useState();
-        const [password,setPassword]=useState();
-        const [confirmpassword,setConfirmpassword]=useState();
+import { gapi } from 'gapi-script';
+import axios from 'axios';
 
-        const handleSubmit=(event)=>{
-            event.preventDefault();
-            if(handleValidation()){
-                axios.post('http://localhost:4000/register',{name,email,password})
-                .then(result=>
-                    {
-                        console.log(result)
-                        cookies.set('username', name);
-                        navigate('/');
-                    })
-                .catch((error) => {
-                    // Handle error
-                    if (error.response) {
-                        // The request was made, but the server responded with an error status code (e.g., 404, 500)
-                        console.error('Error status code:', error.response.status);
-                        console.error('Error data:', error.response.data);
-                    } else if (error.request) {
-                        // The request was made, but no response was received
-                        console.error('No response received:', error.request);
-                    } else {
-                        // Something else happened while setting up the request
-                        console.error('Error:', error.message);
-                    }
-                })
-            }
-        }
+function Register() {
+    const [name,setName]=useState();
+    const [email,setEmail]=useState();
+    const history = useNavigate();
 
-        const handleValidation=()=>{
-            if(password!==confirmpassword)
-            {
-                alert("Passwords should be same");
-                return false
-            }
-            else if(name.length<3){
-                alert("Username should be grea  ter than 3");
-                return false
-            }
-            else if(password.length<8){
-                alert("Password should be equal to or less than 8 characters");
-                return false
-            }
-            return true
-            
-        }
-        
+    
+  const clientId='415298408552-lm7migunau5123ifpofpd995aam8n3vu.apps.googleusercontent.com';
+  useEffect(()=>{
+    gapi.load("client:auth2",()=>{
+      gapi.auth2.init({clientId:clientId})
+    })
+  },[])
 
-    return (
-        <div className='register_body'> 
-            <form onSubmit={handleSubmit}>
-                <div className="brand">
-                </div>
-                <input
-                    type='text'
-                    placeholder='Username'
-                    name='username'
-                    onChange={(e)=>setName(e.target.value)}
-                />
-                <input
-                    type='email'
-                    placeholder='Email'
-                    name='email'
-                    onChange={(e)=>setEmail(e.target.value)}
-                />
-                <input
-                    type='password'
-                    placeholder='Password'
-                    name='password'
-                    onChange={(e)=>setPassword(e.target.value)}
-                />
-                <input
-                    type='password'
-                    placeholder='Confirm Password'
-                    name='confirmpassword'
-                    onChange={(e)=>setConfirmpassword(e.target.value)}
 
-                />
-                <button type='submit'>Create User</button>
-                <div className="already_user">
-                    Already have an account ? <Link to='/login'>Login</Link>
-                </div>
-            </form>
-        </div>
-    )
-    }
+
+  const responseGoogle=(response)=>{
+    console.log(response['wt']);
+    setName(response['wt']['Ad'])
+    setEmail(response['wt']['cu'])
+
+
+    axios.post('http://localhost:4000/register', { name, email })
+            .then(result => {
+                console.log(result.data); // Log the response data
+                if (result.data.success) {
+                    // Registration successful, redirect to login page
+                    history('/login');
+                } else {
+                    // Registration failed, handle error
+                    alert(result.data.message || "Registration failed"); // Show error message or a default message
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle any network or server errors
+                alert('An error occurred. Please try again later.');
+            });
+
+    
+  }
+
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <GoogleLogin
+        clientId="415298408552-lm7migunau5123ifpofpd995aam8n3vu.apps.googleusercontent.com"
+        buttonText="Login with Google"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle} // You can handle failure as well
+        cookiePolicy={'single_host_origin'}
+      />
+    </div>
+  );
+}
+
+export default Register;

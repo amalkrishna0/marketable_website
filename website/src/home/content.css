@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+.main_content_bar{
+    width: 60%;
+    margin: 0 auto;
+    font-family: 'Handlee', sans-serif;
+    height: 180vh;
+}
+.heading1{
+    text-align: center;
+    text-transform: uppercase;
+}
+.first_course
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    margin-bottom: 40px;
+
+}
+.first_course.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+.first_course_image{
+    background-image: url('first_course.png');
+    aspect-ratio: 16/9;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.first_course_details{
+    font-size: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.second_course
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    margin-bottom: 40px;
+}
+.second_course_image{
+    background-image: url('second_course.png');
+    aspect-ratio: 16/9;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.second_course_details{
+    font-size: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.third_course
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    margin-bottom: 40px;
+}
+.third_course_image{
+    background-image: url('third_course.png');
+    aspect-ratio: 16/9;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.third_course_details{
+    font-size: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+.reveal{
+    transform: translateY(150px);
+    opacity: 0; 
+    transition: all 2s ease;
+}
+.reveal.active{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .main_content_bar {
+        width: 95%; /* Adjust width for smaller screens */
+    }
+
+    .course_container {
+        grid-template-columns: 1fr; /* Adjust layout for smaller screens */
+    }
+
+    .heading1 {
+        font-size:20px; /* Adjust font size for smaller screens */
+    }
+
+    .course_details {
+        font-size: 5px; /* Adjust font size for smaller screens */
+    }
+
+    .reveal {
+        transform: translateY(30px); /* Adjust initial translateY for smaller screens */
+    }
+    .first_course_details{
+        font-size: 15px;
+    }
+    .second_course_details{
+        font-size: 15px;
+    }
+    .third_course_details{
+        font-size: 15px;
+    }
+}

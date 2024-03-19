@@ -108,3 +108,67 @@
     }
 
 }
+
+
+
+
+
+
+
+
+
+/* content2.css */
+
+/* Container styles */
+.buy_course {
+    margin-top: 90px;
+    padding: 50px 0;
+  }
+  
+  .for_who {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  /* Point styles */
+  .for_who_desc {
+    display: grid       ;
+    grid-gap: 30px;
+    justify-content: space-around;
+  }
+  
+  .first_desc {
+    margin-top: 100px;
+    display: flex;
+    margin: 0 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffffa2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .first_desc:hover {
+    transform: translateY(-5px);
+  }
+  
+
+  
+  /* Text styles */
+  .desc1 {
+    text-align: center;
+  }
+  
+  .desc1 h1 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .desc1 p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+  }
+  
